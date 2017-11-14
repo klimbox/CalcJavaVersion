@@ -9,7 +9,6 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
-import org.apache.http.client.fluent.Request;
 
 
 public class Calculator {
@@ -17,6 +16,7 @@ public class Calculator {
 	
 	private JFrame frmJavaCalculator;
 	private JTextField txtDisplay;
+	private ServerCalc _sCalc;
 
 	String firstNum;
 	String secondNum;
@@ -41,6 +41,7 @@ public class Calculator {
 	 * Create the application.
 	 */
 	public Calculator() {
+		_sCalc = new ServerCalc();
 		initialize();
 	}
 
@@ -251,22 +252,8 @@ public class Calculator {
 			public void actionPerformed(ActionEvent e) {
 				if (txtDisplay.getText() != "")
 				{	
-					
 					secondNum = txtDisplay.getText();
-					String req = "?num1=" + firstNum + "&num2=" + secondNum + "&opr=" + operation;
-					
-					try 
-					{
-						String res = Request.Get("http://localhost:8080/" + req)
-											.execute()
-											.returnContent()
-											.toString();
-						txtDisplay.setText(res);
-					}
-					catch(Exception ex)
-					{
-						txtDisplay.setText("server not respond");
-					}
+					txtDisplay.setText(_sCalc.Calculate(firstNum, secondNum, operation));
 				}
 			}
 		});
