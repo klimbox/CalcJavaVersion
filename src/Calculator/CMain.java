@@ -8,8 +8,7 @@ public class CMain {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Calculator window = new Calculator();
-					window.frmJavaCalculator.setVisible(true);
+					new Calculator();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
