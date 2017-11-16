@@ -3,14 +3,16 @@ package Calculator;
 import org.apache.http.client.fluent.Request;
 
 public class ServerCalc implements IServerCalc {
-
+	private String _url = "http://localhost:9999/";
+	
 	@Override
 	public String Calculate(String num1, String num2, String opr) {
-		String req = "?num1=" + num1 + "&num2=" + num2 + "&opr=" + opr;
+		
+		String req = "?a=" + num1 + "&b=" + num2 + "&op=" + (opr != "+" ? opr : "p") ;
 		String res = "";
 		try 
 		{
-			res = Request.Get(IServerCalc.Url + req)
+			res = Request.Get(_url + req)
 					.execute()
 					.returnContent()
 					.toString();
