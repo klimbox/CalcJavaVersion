@@ -14,7 +14,6 @@ public class Calculator {
 
 
 	public Calculator() {
-//		_sCalc = new ServerCalc();
 		initialize();
 	}
 
@@ -114,7 +113,7 @@ public class Calculator {
 		
 // 4th row		
 		JButton btnDot = new JButton(",");
-		btnDot.addActionListener(actHandler);
+		btnDot.addActionListener(null);
 		btnDot.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 15));
 		btnDot.setBounds(5, 245, 70, 50);
 		frmJavaCalculator.getContentPane().add(btnDot);

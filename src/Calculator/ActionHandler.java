@@ -1,5 +1,6 @@
 package Calculator;
 
+import CalcLogic.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -17,7 +18,7 @@ public class ActionHandler implements ActionListener
 	public ActionHandler() {}
 	public ActionHandler(JTextField txtField) 
 	{
-		this._sCalc = new ServerCalc();
+		this._sCalc = new MockServer();
 		this._txtDisplay = txtField;
 	}
 	
