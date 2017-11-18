@@ -1,4 +1,4 @@
-package CalcLogic;
+package main;
 
 
 public class MockServer implements IServerCalc {

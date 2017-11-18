@@ -1,6 +1,4 @@
-package CalculatorTests;
-
-import Calculator.Calculator;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
@@ -11,12 +9,15 @@ import org.junit.runner.*;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import main.Calculator;
+
+
+
 @RunWith(Parameterized.class)
-public class CalcComplexTest {
+public class CalcExistTest {
 
 	private FrameFixture calc;
- 	private String num1;
- 	private String num2;
+ 	private String num;
     private String expected;
     
 	@Before
@@ -28,34 +29,35 @@ public class CalcComplexTest {
 		calc.cleanUp();
 	}
 	
-    public CalcComplexTest(String numberA, String numberB, String expected) 
+	
+    public CalcExistTest(String number, String expected) 
     {
-        this.num1 = numberA;
-        this.num2 = numberB;
+        this.num = number;
         this.expected = expected;
     }
-
     
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"1","2","12"},
-                {"2","3","23"},
-                {"3","4","34"},
-                {"4","5","45"},
-                {"5","6","56"},
-                {"6","7","67"},
-                {"7","8","78"},
-                {"8","9","89"},
-                {"9","0","90"}
+                {"1","1"},
+                {"2","2"},
+                {"3","3"},
+                {"4","4"},
+                {"5","5"},
+                {"6","6"},
+                {"7","7"},
+                {"8","8"},
+                {"9","9"},
+                {"0","0"}
         });
     }
-	
+
+    
     @Test
-	public void testComplex() 
+	public void testExist() 
 	{	
-		calc.button(num1).click();
-		calc.button(num2).click();
+		calc.button(num).click();
 		assertEquals(expected, calc.textBox("display").text());
 	}
+
 }

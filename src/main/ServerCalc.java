@@ -1,4 +1,4 @@
-package CalcLogic;
+package main;
 
 import org.apache.http.client.fluent.Request;
 
