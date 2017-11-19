@@ -5,46 +5,38 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class ActionHandler implements ActionListener
-{
+public class ActionHandler implements ActionListener {
 	private JTextField _txtDisplay;
 	private IServerCalc _sCalc;
 
 	private String _firstNum;
 	private String _secondNum;
 	private String _operation;
-	
-	public ActionHandler() {}
-	public ActionHandler(JTextField txtField) 
-	{
+
+	public ActionHandler() {
+	}
+
+	public ActionHandler(JTextField txtField) {
 		this._sCalc = new MockServer();
 		this._txtDisplay = txtField;
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
+	public void actionPerformed(ActionEvent e) {
 		String btn = ((JButton) e.getSource()).getText();
-		
-        if(btn == "+" || btn == "-" || btn == "/" || btn == "*")
-        {
+
+		if (btn == "+" || btn == "-" || btn == "/" || btn == "*") {
 			_firstNum = _txtDisplay.getText();
 			_txtDisplay.setText("");
 			_operation = btn;
-        }
-        else if(btn == "C")
-	    {
-        	_firstNum = "";
-        	_operation = "";
+		} else if (btn == "C") {
+			_firstNum = "";
+			_operation = "";
 			_txtDisplay.setText(null);
-	    }
-        else if(btn == "=")
-        {
+		} else if (btn == "=") {
 			_secondNum = _txtDisplay.getText();
 			_txtDisplay.setText(_sCalc.Calculate(_firstNum, _secondNum, _operation));
-        }
-        else if(btn == "<--")
-        {        	
+		} else if (btn == "<--") {
 			String backspace = null;
 
 			if (_txtDisplay.getText().length() > 0) {
@@ -53,11 +45,9 @@ public class ActionHandler implements ActionListener
 				backspace = strB.toString();
 				_txtDisplay.setText(backspace);
 			}
-        }
-        else {
+		} else {
 			String EnterNumber = _txtDisplay.getText() + btn;
 			_txtDisplay.setText(EnterNumber);
-        }
+		}
 	}
 }
-

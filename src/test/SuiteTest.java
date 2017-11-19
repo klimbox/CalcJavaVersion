@@ -6,6 +6,6 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CalcExistTest.class, CalcComplexTest.class })
-public class SuiteTests {
+public class SuiteTest {
 
 }
